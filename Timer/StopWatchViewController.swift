@@ -9,7 +9,7 @@
 import UIKit
 
 class StopWatchViewController: UIViewController {
-    
+    //Buttons
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -18,7 +18,7 @@ class StopWatchViewController: UIViewController {
     var timer = Timer()
     var isTimerRunning = false
     var counter = 0.0
-    
+    //initialize GUI
     override func viewDidLoad() {
         super.viewDidLoad()
         resetButton.isEnabled = false
@@ -32,7 +32,7 @@ class StopWatchViewController: UIViewController {
         stopButton.layer.masksToBounds = true
         
     }
-    
+    //Function to be executed if Reset Button is pressed
     @IBAction func resetDidTap(_ sender: Any) {
         timer.invalidate()
         isTimerRunning = false
@@ -45,7 +45,7 @@ class StopWatchViewController: UIViewController {
         resetButton.alpha=0.5
         stopButton.alpha=0.5
     }
-    
+    //Function to be executed if Start Button is pressed
     @IBAction func startDidTap(_ sender: Any) {
         if !isTimerRunning {
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
@@ -60,7 +60,7 @@ class StopWatchViewController: UIViewController {
             
         }
     }
-    
+    //Function to be executed if Stop Button is pressed
     @IBAction func stopDidTap(_ sender: Any) {
         print("stopDidTap")
         resetButton.isEnabled = true
@@ -75,7 +75,7 @@ class StopWatchViewController: UIViewController {
         
         
     }
-    
+    //Function to compute time calculations to be displayed
     @objc func runTimer() {
         counter+=0.1
         timerLabel.text = "\(counter)"
